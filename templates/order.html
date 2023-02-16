@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+  <meta charset="UTF-8">
+  <title>Order</title>
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <h1>Order</h1>
+      <p>OrderUID: {{ .OrderUID }}</p>
+      <p>TrackNumber: {{ .TrackNumber }}</p>
+      <p>Entry: {{ .Entry }}</p>
+      <p>Locale: {{ .Locale }}</p>
+      <p>InternalSignature: {{ .InternalSignature }}</p>
+      <p>CustomerID: {{ .CustomerID }}</p>
+      <p>DeliveryService: {{ .DeliveryService }}</p>
+      <p>Shardkey: {{ .Shardkey }}</p>
+      <p>SmID: {{ .SmID }}</p>
+      <p>DateCreated: {{ .DateCreated }}</p>
+      <p>OofShard: {{ .OofShard }}</p>
+    </div>
+    <div class="col-4">
+      <h1>Payment</h1>
+      <p>Transaction: {{ .Payment.Transaction }}</p>
+      <p>RequestID: {{ .Payment.RequestID }}</p>
+      <p>Currency: {{ .Payment.Currency }}</p>
+      <p>Provider: {{ .Payment.Provider }}</p>
+      <p>Amount: {{ .Payment.Amount }}</p>
+      <p>PaymentDt: {{ .Payment.PaymentDt }}</p>
+      <p>Bank: {{ .Payment.Bank }}</p>
+      <p>DeliveryCost: {{ .Payment.DeliveryCost }}</p>
+      <p>GoodsTotal: {{ .Payment.GoodsTotal }}</p>
+      <p>CustomFee: {{ .Payment.CustomFee }}</p>
+    </div>
+    <div class="col-4">
+      <h1>Delivery</h1>
+      <p>Name: {{ .Delivery.Name }}</p>
+      <p>Phone: {{ .Delivery.Phone }}</p>
+      <p>Zip: {{ .Delivery.Zip }}</p>
+      <p>City: {{ .Delivery.City }}</p>
+      <p>Address: {{ .Delivery.Address }}</p>
+      <p>Region: {{ .Delivery.Region }}</p>
+      <p>Email: {{ .Delivery.Email }}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <h1>Items</h1>
+    </div>
+  </div>
+  {{ range .Items }}
+  <div class="row">
+      <button class="btn btn-primary btn-clock col-12" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample_{{ .Rid }}" aria-expanded="false" aria-controls="collapseWidthExample_{{ .Rid }}">
+        {{ .Name }}
+      </button>
+      <div style="min-height: 30px;">
+      <div class="collapse" id="collapseWidthExample_{{ .Rid }}">
+      <div class="card card-body" style="width: 100%;">
+
+      <h1>Item: {{ .Name }}</h1>
+      <p>ChrtID: {{ .ChrtID }}</p>
+      <p>TrackNumber: {{ .TrackNumber }}</p>
+      <p>Price: {{ .Price }}</p>
+      <p>Rid: {{ .Rid }}</p>
+      <p>Name: {{ .Name }}</p>
+      <p>Sale: {{ .Sale }}</p>
+      <p>Size: {{ .Size }}</p>
+      <p>TotalPrice: {{ .TotalPrice }}</p>
+      <p>NmID: {{ .NmID }}</p>
+      <p>Brand: {{ .Brand }}</p>
+      <p>Status: {{ .Status }}</p>
+      </div>
+      </div>
+      </div>
+  </div>
+  {{ end }}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+</body>
+</html>
