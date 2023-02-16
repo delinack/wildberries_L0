@@ -15,5 +15,5 @@
 ```shell
 make
 make db
-make schema # создание сценария SQL для резервного копирования базы данных PostgreSQL
+make schema 
 ```
